@@ -1,7 +1,9 @@
-/* Fonte e cores base */
+/* ===============================
+   Base
+=================================*/
 body {
   font-family: 'Inter', sans-serif;
-  background: #f0f2f5;
+  background: linear-gradient(135deg, #f0f2f5, #e6ecf2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,26 +12,30 @@ body {
   color: #333;
 }
 
-/* Container central */
+/* ===============================
+   Container
+=================================*/
 .container {
   background: #fff;
-  border-radius: 15px;
+  border-radius: 16px;
   padding: 40px;
   max-width: 480px;
   width: 90%;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  animation: fadeIn 0.6s ease;
 }
 
-/* Título */
 h2 {
   color: #00AEEF;
   margin-bottom: 30px;
 }
 
-/* Inputs */
+/* ===============================
+   Inputs
+=================================*/
 .input-group {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   text-align: left;
 }
 
@@ -40,126 +46,144 @@ label {
   color: #555;
 }
 
-input[type=number],
-input[type=text] {
+input {
   width: 100%;
-  padding: 10px;
+  padding: 11px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  font-size: 16px;
+  font-size: 15px;
   background: #f9f9f9;
-  color: #333;
-  transition: all 0.2s ease;
+  transition: 0.2s;
 }
 
-input[type=number]:focus,
-input[type=text]:focus {
+input:focus {
   border-color: #00AEEF;
   outline: none;
-  box-shadow: 0 0 5px rgba(0,174,239,0.3);
+  box-shadow: 0 0 6px rgba(0,174,239,0.3);
+  background: #fff;
 }
 
-/* Botão Calcular */
-.botoes-superiores {
-  margin-top: 10px;
-  margin-bottom: 15px;
-}
-
-.botoes-superiores button {
+/* ===============================
+   Botões
+=================================*/
+button {
   padding: 12px 25px;
   border: none;
   border-radius: 8px;
   background: #00AEEF;
   color: #fff;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.2s ease;
+  transition: 0.2s;
 }
 
-.botoes-superiores button:hover {
+button:hover {
   background: #0095C9;
+  transform: translateY(-1px);
 }
 
-/* Barra de progresso */
+/* ===============================
+   Barra de progresso
+=================================*/
 .progress-container {
   width: 100%;
   height: 12px;
   background: #e0e0e0;
   border-radius: 8px;
   margin: 20px 0;
+  overflow: hidden;
 }
 
 .progress-bar {
   height: 100%;
   width: 0%;
-  background: #00AEEF; /* cor padrão; o JS atualiza conforme categoria */
+  background: #00AEEF;
   border-radius: 8px;
-  transition: width 0.8s ease-in-out, background 0.5s ease;
+  transition: width 0.8s ease, background 0.4s ease;
 }
 
-/* Resultado com GIF */
+/* ===============================
+   Resultado
+=================================*/
 .resultado {
   margin-top: 20px;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: 600;
-  font-size: 17px;
+  font-size: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   opacity: 0;
-  transition: all 0.5s ease;
-  background: #f5f7fa;
-  text-align: center;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
 }
 
-/* Cores de fundo por categoria */
-.resultado.ouro { background: #fff8dc; }   /* fundo dourado suave */
-.resultado.prata { background: #f0f0f0; }  /* fundo prata suave */
-.resultado.bronze { background: #f9f0e6; } /* fundo bronze suave */
+/* Categorias CORRETAS (alinhadas com JS) */
+.resultado.sem {
+  background: #fff8dc;
+}
 
+.resultado.reforço {
+  background: #f0f0f0;
+}
+
+.resultado.geral {
+  background: #f9f0e6;
+}
+
+/* Mostrar */
 .resultado.show {
   opacity: 1;
+  transform: translateY(0);
 }
 
+/* GIF */
 .resultado img {
-  width: 120px;
-  height: auto;
+  width: 110px;
   border-radius: 8px;
-  transition: transform 0.5s ease;
+  transition: transform 0.3s ease;
 }
 
 .resultado img:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
-/* Botões de ação (aparecem após cálculo) */
+/* ===============================
+   Botões inferiores
+=================================*/
 .botoes {
   margin-top: 15px;
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-.botoes button {
-  padding: 12px 25px;
-  border: none;
-  border-radius: 8px;
-  background: #00AEEF;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.2s ease;
+/* ===============================
+   Texto auxiliar
+=================================*/
+.info {
+  font-size: 13px;
+  color: #666;
 }
 
-.botoes button:hover {
-  background: #0095C9;
+/* ===============================
+   Animação
+=================================*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Placeholder estilo */
+/* Placeholder */
 input::placeholder {
   color: #aaa;
 }
