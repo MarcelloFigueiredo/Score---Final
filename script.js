@@ -18,7 +18,7 @@ function resetCalculadora() {
   progressBar.style.background = '#00AEEF';
 
   resultadoDiv.innerHTML = '';
-  resultadoDiv.classList.remove('show', 'ouro', 'prata', 'bronze');
+  resultadoDiv.classList.remove('show', 'Sem Reforço', 'Reforço Leve', 'Reforço Geral');
 
   botoesAcoes.style.display = 'none';
 }
@@ -43,15 +43,15 @@ calcularBtn.addEventListener('click', () => {
   let corBarra = '#00AEEF';
 
   if (porcentagem >= 95) {
-    categoria = 'Ouro';
+    categoria = 'Sem Reforço';
     gifUrl = 'https://media.giphy.com/media/111ebonMs90YLu/giphy.gif';
     corBarra = '#FFD700';
   } else if (porcentagem >= 80) {
-    categoria = 'Prata';
+    categoria = 'Reforço Leve';
     gifUrl = 'https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif';
     corBarra = '#C0C0C0';
   } else {
-    categoria = 'Bronze';
+    categoria = 'Reforço Geral';
     const bronzeGifs = [
       'https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif',
       'https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif',
@@ -75,7 +75,7 @@ calcularBtn.addEventListener('click', () => {
   `;
 
   // Remove classes antigas e adiciona a nova + show
-  resultadoDiv.classList.remove('ouro', 'prata', 'bronze');
+  resultadoDiv.classList.remove('Sem Reforço', 'Reforço Leve', 'Reforço Geral');
   resultadoDiv.classList.add('show', categoria.toLowerCase());
 
   // Mostra os botões abaixo do GIF
