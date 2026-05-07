@@ -1,10 +1,15 @@
 /* ===============================
-   Base
+   Reset
 =================================*/
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+/* ===============================
+   Base
+=================================*/
 body {
   font-family: 'Inter', sans-serif;
   background: linear-gradient(135deg, #f0f2f5, #e6ecf2);
@@ -12,9 +17,8 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  margin: 0;
-  color: #333;
   padding: 20px;
+  color: #333;
 }
 
 /* ===============================
@@ -22,16 +26,16 @@ body {
 =================================*/
 .container {
   background: #fff;
-  border-radius: 16px;
-  padding: 40px;
-  max-width: 480px;
   width: 100%;
-  text-align: center;
+  max-width: 500px;
+  padding: 40px;
+  border-radius: 18px;
   box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-  animation: fadeIn 0.6s ease;
+  animation: fadeIn 0.5s ease;
 }
 
 h2 {
+  text-align: center;
   color: #00AEEF;
   margin-bottom: 30px;
   font-size: 30px;
@@ -41,46 +45,45 @@ h2 {
    Inputs
 =================================*/
 .input-group {
-  margin-bottom: 18px;
-  text-align: left;
+  margin-bottom: 20px;
 }
 
 label {
   display: block;
+  margin-bottom: 8px;
   font-weight: 600;
-  margin-bottom: 6px;
   color: #555;
 }
 
 input {
   width: 100%;
-  padding: 11px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #f9fafb;
   font-size: 15px;
-  background: #f9f9f9;
-  transition: 0.2s;
+  transition: 0.2s ease;
 }
 
 input:focus {
-  border-color: #00AEEF;
   outline: none;
-  box-shadow: 0 0 6px rgba(0,174,239,0.3);
+  border-color: #00AEEF;
   background: #fff;
+  box-shadow: 0 0 6px rgba(0,174,239,0.3);
 }
 
-/* Placeholder */
 input::placeholder {
-  color: #aaa;
+  color: #9ca3af;
 }
 
 /* ===============================
    Texto auxiliar
 =================================*/
 .info {
-  font-size: 13px;
-  color: #666;
+  text-align: center;
   margin-top: 10px;
+  font-size: 14px;
+  color: #666;
 }
 
 /* ===============================
@@ -88,37 +91,45 @@ input::placeholder {
 =================================*/
 .botoes-superiores {
   margin-top: 25px;
+  display: flex;
+  justify-content: center;
 }
 
 button {
-  padding: 12px 25px;
   border: none;
-  border-radius: 8px;
-  background: #00AEEF;
-  color: #fff;
+  border-radius: 10px;
+  padding: 12px 22px;
   font-size: 15px;
-  cursor: pointer;
   font-weight: 600;
+  cursor: pointer;
   transition: 0.2s ease;
 }
 
-button:hover {
-  background: #0095C9;
+/* Calcular */
+#calcularBtn {
+  background: #00AEEF;
+  color: white;
+}
+
+#calcularBtn:hover {
+  background: #0095c9;
   transform: translateY(-1px);
 }
 
-/* Botão salvar */
+/* Salvar */
 #salvarBtn {
   background: #22c55e;
+  color: white;
 }
 
 #salvarBtn:hover {
   background: #16a34a;
 }
 
-/* Botão refazer */
+/* Refazer */
 #refazerBtn {
   background: #ef4444;
+  color: white;
 }
 
 #refazerBtn:hover {
@@ -131,36 +142,35 @@ button:hover {
 .progress-container {
   width: 100%;
   height: 14px;
-  background: #e0e0e0;
-  border-radius: 8px;
-  margin: 25px 0;
+  background: #e5e7eb;
+  border-radius: 999px;
   overflow: hidden;
+  margin-top: 30px;
 }
 
 .progress-bar {
-  height: 100%;
   width: 0%;
+  height: 100%;
   background: #00AEEF;
-  border-radius: 8px;
+  border-radius: 999px;
   transition:
-    width 0.8s ease,
-    background 0.4s ease;
+    width 0.7s ease,
+    background 0.3s ease;
 }
 
 /* ===============================
    Resultado
 =================================*/
 .resultado {
-  margin-top: 20px;
+  margin-top: 25px;
+  border-radius: 14px;
   padding: 20px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 16px;
+  text-align: center;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 
   opacity: 0;
   transform: translateY(10px);
@@ -168,7 +178,7 @@ button:hover {
   transition: all 0.4s ease;
 }
 
-/* Mostrar resultado */
+/* Mostrar */
 .resultado.show {
   opacity: 1;
   transform: translateY(0);
@@ -180,16 +190,16 @@ button:hover {
 }
 
 .resultado.reforco-leve {
-  background: #f0f0f0;
+  background: #f3f4f6;
 }
 
 .resultado.reforco-geral {
-  background: #f9f0e6;
+  background: #fff7ed;
 }
 
 /* Texto */
 .resultado p {
-  margin: 0;
+  font-size: 16px;
   line-height: 1.5;
 }
 
@@ -201,7 +211,7 @@ button:hover {
 }
 
 .resultado img:hover {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 /* ===============================
@@ -209,16 +219,14 @@ button:hover {
 =================================*/
 .botoes {
   margin-top: 20px;
-
-  display: flex;
   justify-content: center;
+  align-items: center;
   gap: 12px;
-
   flex-wrap: wrap;
 }
 
 /* ===============================
-   Responsividade
+   Responsivo
 =================================*/
 @media (max-width: 520px) {
 
@@ -230,12 +238,12 @@ button:hover {
     font-size: 24px;
   }
 
-  button {
-    width: 100%;
-  }
-
   .botoes {
     flex-direction: column;
+  }
+
+  button {
+    width: 100%;
   }
 }
 
