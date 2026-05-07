@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Score Final</title>
 
   <!-- Fonte -->
@@ -13,14 +14,18 @@
 <body>
 
 <div class="container">
+
   <h2>Score Final</h2>
 
   <!-- Nome -->
   <div class="input-group">
-    <label for="nome">Nome do Analista:</label>
-    <input 
-      type="text" 
-      id="nome" 
+    <label for="nome">
+      Nome do Analista:
+    </label>
+
+    <input
+      type="text"
+      id="nome"
       placeholder="Digite o nome do analista"
       autocomplete="off"
     >
@@ -31,11 +36,12 @@
     <label for="teste">
       Pontuação das avaliações de teste (0 a 135):
     </label>
-    <input 
-      type="number" 
-      id="teste" 
-      min="0" 
-      max="135" 
+
+    <input
+      type="number"
+      id="teste"
+      min="0"
+      max="135"
       step="1"
       value="0"
     >
@@ -46,11 +52,12 @@
     <label for="final">
       Pontuação da avaliação final (0 a 55):
     </label>
-    <input 
-      type="number" 
-      id="final" 
-      min="0" 
-      max="50" 
+
+    <input
+      type="number"
+      id="final"
+      min="0"
+      max="55"
       step="1"
       value="0"
     >
@@ -61,27 +68,31 @@
     <label for="kahoot">
       Pontuação do Kahoot (0 a 10):
     </label>
-    <input 
-      type="number" 
-      id="kahoot" 
-      min="0" 
-      max="5" 
+
+    <input
+      type="number"
+      id="kahoot"
+      min="0"
+      max="10"
       step="1"
       value="0"
     >
   </div>
 
-  <!-- Info -->
+  <!-- Informação -->
   <p class="info">
-    Pontuação máxima total: <strong>200 pontos</strong>
+    Pontuação máxima total:
+    <strong>200 pontos</strong>
   </p>
 
   <!-- Botão calcular -->
   <div class="botoes-superiores">
-    <button id="calcularBtn">Calcular Categoria</button>
+    <button id="calcularBtn">
+      Calcular Categoria
+    </button>
   </div>
 
-  <!-- Barra -->
+  <!-- Barra de progresso -->
   <div class="progress-container">
     <div class="progress-bar" id="progressBar"></div>
   </div>
@@ -89,17 +100,27 @@
   <!-- Resultado -->
   <div id="resultado" class="resultado"></div>
 
-  <!-- Ações -->
-  <div class="botoes" id="botoesAcoes" style="display:none;">
-    <button id="salvarBtn">Salvar Resultado</button>
-    <button id="refazerBtn">Refazer Cálculo</button>
+  <!-- Botões após cálculo -->
+  <div
+    class="botoes"
+    id="botoesAcoes"
+    style="display: none;"
+  >
+    <button id="salvarBtn">
+      Salvar Resultado
+    </button>
+
+    <button id="refazerBtn">
+      Refazer Cálculo
+    </button>
   </div>
+
 </div>
 
 <!-- Biblioteca PDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-<!-- Script -->
+<!-- JS -->
 <script src="script.js"></script>
 
 </body>
