@@ -47,11 +47,13 @@ function definirCategoria(totalObtido) {
 
   } else {
     categoria = 'Reforço Geral';
+
     const gifs = [
       'https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif',
       'https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif',
       'https://media.giphy.com/media/26tPoyDhjiJ2g7rEs/giphy.gif'
     ];
+
     gifUrl = gifs[Math.floor(Math.random() * gifs.length)];
     corBarra = '#CD7F32';
   }
@@ -59,40 +61,74 @@ function definirCategoria(totalObtido) {
   return { categoria, gifUrl, corBarra };
 }
 
-function atualizarUI({ nome, totalObtido, porcentagem, categoria, gifUrl, corBarra }) {
-  // Barra
+function atualizarUI({
+  nome,
+  totalObtido,
+  porcentagem,
+  categoria,
+  gifUrl,
+  corBarra
+}) {
+
+  // Atualiza barra
   progressBar.style.width = `${porcentagem}%`;
   progressBar.style.background = corBarra;
 
   // Resultado
   resultadoDiv.innerHTML = `
-    <p>Nome do Analista: <strong>${nome}</strong></p>
-    <p>Pontuação total: ${totalObtido}/${TOTAL_POSSIVEL}</p>
-    <p>Porcentagem: ${porcentagem.toFixed(1)}%</p>
-    <p>Categoria: ${categoria}</p>
-    <img src="${gifUrl}" alt="${categoria}">
+    <p>
+      Nome do Analista:
+      <strong>${nome}</strong>
+    </p>
+
+    <p>
+      Pontuação total:
+      ${totalObtido}/${TOTAL_POSSIVEL}
+    </p>
+
+    <p>
+      Porcentagem:
+      ${porcentagem.toFixed(1)}%
+    </p>
+
+    <p>
+      Categoria:
+      <strong>${categoria}</strong>
+    </p>
+
+    <img
+      src="${gifUrl}"
+      alt="${categoria}"
+      style="max-width: 220px; margin-top: 15px; border-radius: 12px;"
+    >
   `;
 
-  // Classes
+  // Classes CSS
   resultadoDiv.className = '';
-  resultadoDiv.classList.add('show', categoria.toLowerCase());
+  resultadoDiv.classList.add('show');
 
-  // Botões
+  // Mostrar botões
   botoesAcoes.style.display = 'flex';
 }
 
 function resetCalculadora() {
+
+  // Limpa inputs
   nomeInput.value = '';
+
   document.getElementById('teste').value = 0;
   document.getElementById('final').value = 0;
   document.getElementById('kahoot').value = 0;
 
+  // Reset barra
   progressBar.style.width = '0%';
   progressBar.style.background = '#00AEEF';
 
+  // Limpa resultado
   resultadoDiv.innerHTML = '';
   resultadoDiv.className = '';
 
+  // Esconde botões
   botoesAcoes.style.display = 'none';
 }
 
@@ -100,11 +136,21 @@ function resetCalculadora() {
 // Eventos
 // ===============================
 calcularBtn.addEventListener('click', () => {
+
   const nome = nomeInput.value.trim() || 'Analista';
 
   const valores = getValores();
-  const { totalObtido, porcentagem } = calcularPontuacao(valores);
-  const { categoria, gifUrl, corBarra } = definirCategoria(totalObtido);
+
+  const {
+    totalObtido,
+    porcentagem
+  } = calcularPontuacao(valores);
+
+  const {
+    categoria,
+    gifUrl,
+    corBarra
+  } = definirCategoria(totalObtido);
 
   atualizarUI({
     nome,
@@ -116,17 +162,38 @@ calcularBtn.addEventListener('click', () => {
   });
 });
 
+// ===============================
+// Salvar PDF
+// ===============================
 salvarBtn.addEventListener('click', () => {
-  if (resultadoDiv.innerHTML.trim() !== '') {
-    const nomeArquivo = nomeInput.value.trim() || "analista";
 
-    html2pdf().from(resultadoDiv).set({
-      margin: 10,
-      filename: `resultado_${nomeArquivo}.pdf`,
-      html2canvas: { scale: 2 },
-      jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
-    }).save();
+  if (resultadoDiv.innerHTML.trim() !== '') {
+
+    const nomeArquivo =
+      nomeInput.value.trim() || 'analista';
+
+    html2pdf()
+      .from(resultadoDiv)
+      .set({
+        margin: 10,
+        filename: `resultado_${nomeArquivo}.pdf`,
+        html2canvas: {
+          scale: 2
+        },
+        jsPDF: {
+          orientation: 'portrait',
+          unit: 'mm',
+          format: 'a4'
+        }
+      })
+      .save();
   }
 });
 
-refazerBtn.addEventListener('click', resetCalculadora);
+// ===============================
+// Refazer cálculo
+// ===============================
+refazerBtn.addEventListener(
+  'click',
+  resetCalculadora
+);
